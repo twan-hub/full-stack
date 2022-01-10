@@ -1,8 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { NamesModule } from './names/names.module';
 import { NamesModule } from './names/names.module';
 
 @Module({
@@ -13,7 +10,7 @@ import { NamesModule } from './names/names.module';
       port: 3306,
       username: 'root',
       password: 'root',
-      database: 'test',
+      database: 'name',
       autoLoadEntities: true,
       synchronize: true,
     }),

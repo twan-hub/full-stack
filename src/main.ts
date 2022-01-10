@@ -5,21 +5,15 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
+  const config = new DocumentBuilder()
+    .setTitle('Name Example')
+    .setDescription('Artist Names')
+    .setVersion('1.0')
+    .addTag('Names')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
 
-    const config = new DocumentBuilder()
-      .setTitle('User Example')
-      .setDescription('User Description')
-      .setVersion('1.0')
-      .addTag('Users')
-      .build();
-    const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('api', app, document);
-
-    await app.listen(3000);
-  }
-  bootstrap();
   await app.listen(3001);
 }
 bootstrap();
