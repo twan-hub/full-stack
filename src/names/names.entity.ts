@@ -5,6 +5,6 @@ export class Name {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: false, unique: true })
+  @Column({ nullable: false })
   artistName: string;
 }

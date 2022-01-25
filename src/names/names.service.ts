@@ -27,10 +27,11 @@ export class NameService {
 
   async updateName(params: string, name: NameUpdateResponseDto) {
     const nameId = await this.namesRepository.findOne(params);
-    return await this.namesRepository.update({ id: nameId.id }, name);
+    await this.namesRepository.update({ id: nameId.id }, name);
+    return await this.namesRepository.findOne(params);
   }
 
-  async remove(name: Name) {
-    return await this.namesRepository.delete(name.id);
+  async remove(param: string) {
+    return await this.namesRepository.delete(param);
   }
 }

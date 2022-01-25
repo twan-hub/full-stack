@@ -31,7 +31,9 @@ export class NamesController {
   constructor(private readonly nameService: NameService) {}
 
   @Post()
-  async createUser(@Body() name: NamePostResponseDto) {
+  async createUser(
+    @Body() name: NamePostResponseDto,
+  ): Promise<NamePostResponseDto> {
     return await this.nameService.createName(name);
   }
 
@@ -44,12 +46,12 @@ export class NamesController {
   async updateUser(
     @Param('id') params: string,
     @Body() name: NameUpdateResponseDto,
-  ) {
+  ): Promise<NamePostResponseDto> {
     return await this.nameService.updateName(params, name);
   }
 
-  @Delete()
-  async inactiveUser(@Body() name: Name) {
-    return await this.nameService.remove(name);
+  @Delete(':id')
+  async inactiveUser(@Param('id') param: string) {
+    return await this.nameService.remove(param);
   }
 }
